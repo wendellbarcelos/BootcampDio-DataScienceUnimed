@@ -51,16 +51,46 @@
 # print(f'{status} ao realizar o saque')
 
 
-#ESTRUTURAS DE REPETIÇÃO - WHILE, FOR  -> Estruturas de loop
-numero = input('Digite um número: ')
-for indice in numero:
-    print(indice)
+# #ESTRUTURAS DE REPETIÇÃO - WHILE, FOR  -> Estruturas de loop
+# numero = input('Digite um número: ')
+# for indice in numero:
+#     print(indice)
     
-#Ex2
-texto = input('Digite um texto: ')
-VOGAIS = 'AEIOU'
+# #Ex2
+# texto = input('Digite um texto: ')
+# VOGAIS = 'AEIOU'
 
-for letra in texto:
-    if letra.upper() in VOGAIS:
-        print(letra, end='')
-print()
+# for letra in texto:
+#     if letra.upper() in VOGAIS:
+#         print(letra, end='')
+# print()
+
+# #Ex3 Usando o for com a função built-in range
+# for n in range(10):
+#     print(n, end=' ')
+
+# #Ex4 -> Usando While e break
+# opcao = -1
+# while opcao != 0:
+#     opcao = int(input('Escolha uma opção: [0] Sair [1] Saque [2] Extrato: '))
+#     if opcao == 1:
+#         print('Saque realizado')
+#     elif opcao == 2:
+#         print('Imprimindo extrato')
+#     else:  # Diferente da opcao correta ele entra em outro if dentro do else
+#         if opcao == 0:
+#             print('Operação finalizada')
+#         else:
+#             print('Valor invalido')
+#             break  # Usando o break para parar o codigo caso a operação seja invalida
+
+# #Ex4 ->Usando While com contador
+soma = 0
+cont = 0
+while cont != 5:
+    n = int(input('Digite um numero: '))
+    cont += 1
+    soma += n
+    
+print('Total:',soma)
+
