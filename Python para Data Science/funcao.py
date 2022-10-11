@@ -68,3 +68,16 @@ def exibir_resultado(a, b, funcao):  #Ela sozinha não retorna nada
 exibir_resultado(10, 10, somar)  # Passando o argumento e a função que fará a operação
 exibir_resultado(10, 10, subtrair)
 exibir_resultado(10, 10, multiplicar)
+
+
+## Usando a função random do numpy para criar uma lista aleatoria, criando uma função que calcula os valores da lista por um numero informando3
+
+import numpy as np
+lst = np.random.randint(100, size=10)
+print(lst)
+
+def calc(num, lista):
+    lst = [x * num for x in lista]
+    return list(lst)
+
+print(calc(3, lst))
