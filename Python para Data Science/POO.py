@@ -27,6 +27,8 @@
 # cao_2.dormir()  # Chamando o comportamento da classe
 # print(cao_2.acordado)  # Imprimindo o comportamento: retorno False
 
+##########################################
+
 # # Exemplo pratico: João tem uma bicicletaria e gostaria de registrar as vendas de suas bicicletas. Crie um programa onde João informe: cor, modelo, ano e valor da bicicleta vendida. Uma bicicleta pode: buzinar, parar e correr. Adicione esses comportamentos!
 
 # class Bicicletaria:
@@ -71,6 +73,7 @@
 # print(bicicleta2)
 # print(bicicleta3)
 
+##########################################
 
 # ### Método Construtor e Método Desconstrutor
 # # O método construtor sempre é executado quando uma nova instância da classe é criada. Nesse método inicializamos o estado do nosso objeto. Para declarar o método construtor da classe, criamos um método com o nome __init__.
@@ -102,50 +105,200 @@
 # ● Fornece reutilização de código, não precisamos escrever o mesmo código repetidamente. Além disso, permite adicionar mais recursos a uma classe sem modificá-la.
 # ● É de natureza transitiva, o que significa que, se a classe B herdar da classe A, todas as subclasses de B herdarão automaticamente da classe A.
 
-#Ex
-class Pai():
-    pass
+# #Ex
+# class Pai():
+#     pass
 
-class Filho(Pai):
-    pass
+# class Filho(Pai):
+#     pass
 
-### Herança Simples 
-# Quando uma classe filha herda apenas uma classe pai, ela é chamada de herança simples.
+###########################################
 
-class Veiculo:
-    def __init__(self, cor, placa, num_rodas):
-        self.cor = cor
-        self.placa = placa
-        self.num_rodas = num_rodas
+# ### Herança Simples 
+# # Quando uma classe filha herda apenas uma classe pai, ela é chamada de herança simples.
+
+# class Veiculo:
+#     def __init__(self, cor, placa, num_rodas):
+#         self.cor = cor
+#         self.placa = placa
+#         self.num_rodas = num_rodas
         
-    def ligar_motor(self):
-        print('Ligando o motor...')
+#     def ligar_motor(self):
+#         print('Ligando o motor...')
         
-    def __str__(self):
-        return f"{self.__class__.__name__}: {', '.join([f'{chave}: {valor}' for chave, valor in self.__dict__.items()])}"
+#     def __str__(self):
+#         return f"{self.__class__.__name__}: {', '.join([f'{chave}: {valor}' for chave, valor in self.__dict__.items()])}"
     
         
-class Motocicleta(Veiculo):
-    pass
+# class Motocicleta(Veiculo):
+#     pass
 
-class Carro(Veiculo):
-    pass
+# class Carro(Veiculo):
+#     pass
 
-class Caminhao(Veiculo):
-    def __init__(self, cor, placa, num_rodas, carregado):
-        super().__init__(cor, placa, num_rodas)
-        self.carregado = carregado
+# class Caminhao(Veiculo):
+#     def __init__(self, cor, placa, num_rodas, carregado):
+#         super().__init__(cor, placa, num_rodas)
+#         self.carregado = carregado
     
-    def esta_carregado(self):
-        print(f"{'Sim' if self.carregado else 'Não'} esta carregado")
+#     def esta_carregado(self):
+#         print(f"{'Sim' if self.carregado else 'Não'} esta carregado")
 
 
-moto = Motocicleta('Azul', 'HUD-8445', 2)
-carro = Carro('Verde', 'LKI-5421', 4)
-caminhao = Caminhao('Azul', 'PPD-6566', 8, True)
+# moto = Motocicleta('Azul', 'HUD-8445', 2)
+# carro = Carro('Verde', 'LKI-5421', 4)
+# caminhao = Caminhao('Azul', 'PPD-6566', 8, True)
 
-# Chamando outra classe instanciada
-caminhao.esta_carregado()
-print(moto)
-print(carro)
-print(caminhao)
+# # Chamando outra classe instanciada
+# caminhao.esta_carregado()
+# print(moto)
+# print(carro)
+# print(caminhao)
+
+
+##########################################
+# ### Herança Multipla - Muito cuidado para usar essa forma
+# # Quando uma classe filha herda de várias classes pai, ela é chamada de herança múltipla.
+
+# class Animal:
+#     def __init__(self, n_patas):
+#         self.n_patas = n_patas
+        
+#     def __str__(self):
+#         return f"{self.__class__.__name__}: {', '.join([f'{chave}: {valor}' for chave, valor in self.__dict__.items()])}"
+    
+# class Mamifero(Animal):
+#     def __init__(self, cor_pelo, **kw):
+#         self.cor_pelo = cor_pelo
+#         super().__init__(**kw)
+
+
+# class Ave(Animal):
+#     def __init__(self, cor_bico, **kw):
+#         self.cor_bico = cor_bico
+#         super().__init__(**kw)
+
+# class Gato(Mamifero):
+#     pass
+
+# class Onitorrinco(Mamifero, Ave):
+#     pass
+
+
+# gato = Gato(n_patas=4, cor_pelo='Branco')
+# onitorrinco = Onitorrinco(n_patas=2, cor_pelo='Marron', cor_bico='Amarelo')
+
+# print(gato)
+# print(onitorrinco)
+
+##########################################
+
+# ### Encapsulamento
+# # O encapsulamento é um dos conceitos fundamentais em programação orientada a objetos. Ele descreve a ideia de agrupar dados e os métodos que manipulam esses dados em uma unidade. Isso impõe restrições ao acesso direto a variáveis e métodos e pode evitar a modificação acidental de dados. Para evitar alterações acidentais, a variável de um objeto só pode ser alterada pelo método desse objeto.
+
+# # Em linguagens como Java e C++, existem palavras reservadas para definir o nível de acesso aos atributos e métodos da classe. Em Python não temos palavras reservadas, porém usamos convenções no nome do recurso, para definir se a variável é pública ou privada.
+
+# # ● Público: Pode ser acessado de fora da classe.
+# # ● Privado: Só pode ser acessado pela classe
+
+# ## Público e Privado
+# # Todos os recursos são públicos, a menos que o nome inicie com underline. Ou seja, o interpretador Python não irá garantir a proteção do recurso, mas por ser uma convenção amplamente adotada na comunidade, quando encontramos uma variável e/ou método com nome iniciado por underline, sabemos que não deveríamos manipular o seu valor diretamente, ou invocar o método fora do escopo da classe.
+
+
+# class Conta:
+#     def __init__(self, num_agencia, saldo=0):
+#         self.num_agencia = num_agencia
+#         self._saldo = saldo
+        
+#     def depositar(self,valor):
+#         # ... Implementar codigo
+#         self._saldo += valor
+    
+#     def sacar(self,valor):
+#         # ... Implementar codigo
+#         self._saldo -= valor
+    
+#     # Criando um método para retonar a variavel privada    
+#     def extrato(self):
+#         self.agencia = input('Digite agencia: ')
+#         if self.num_agencia == self.agencia:
+#             return f"Saldo: {self._saldo}"
+#         else:
+#             return 'Agencia invalida'
+
+# conta = Conta('851420', 100)
+# conta.depositar(200)  # Usando métodos para deposito
+# print(conta.extrato())  # Usando um método para retorno da variavel privada.
+
+# # print(conta._saldo) # Jamais manipule uma variavel privada dessa forma, por convenção se tem o undeline não deve ser manipulada fora do escopo da classe, pois é uma variavel privada.
+
+##########################################
+
+# ### Property()
+# # Com o property() do Python, você pode criar atributos gerenciados em suas classes. Você pode usar atributos gerenciados, também conhecidos como propriedades, quando precisar modificar sua implementação interna sem alterar a API pública da classe.
+
+# class Foo:
+#     def __init__(self, x=None): # O valor do atributo inicia 0
+#         self._x = x
+        
+#     @property # Obtendo o valor do atributo privado
+#     def x(self):
+#         return self._x or 0
+    
+#     @x.setter  # Mudando o valor do atributo privado
+#     def x(self, value):
+#         self._x += value
+        
+#     @x.deleter  # Deletando o valor do atributo privado
+#     def x(self):
+#         self._x = 0
+
+# foo = Foo(10) # Adicionando o valor do objeto
+# print(foo.x) # Retorno 25
+# foo.x = 15 # Vamos modificar o objeto adicionando mais 15
+# print(foo.x) # Retorno 25
+# del foo.x # Deletando o valor, zerando o valor
+# print(foo.x) # retorno 0
+
+## Ex2
+# class Pessoa:
+#     def __init__(self, nome, ano_nasc):
+#         self.nome = nome
+#         self._ano_nasc = ano_nasc
+        
+#     # Não tendo nenhuma logica para criar uma property usando atributo privado, não faz sentido criar, usa o atributo publico que faz mais sendido
+#     @property
+#     def idade(self):
+#         _ano_atual = 2022
+#         return _ano_atual - self._ano_nasc
+    
+# pessoa = Pessoa('Wendell', 1991)
+# print(f'Nome: {pessoa.nome} | idade: {pessoa.idade}')
+##########################################
+
+### Polimorfismo
+## A palavra polimorfismo significa ter muitas formas. Na programação, polimorfismo significa o mesmo nome de função (mas assinaturas diferentes) sendo usado para tipos diferentes.
+
+## Na herança, a classe filha herda os métodos da classe pai. No entanto, é possível modificar um método em uma classe filha herdada da classe pai. Isso é particularmente útil nos casos em que o método herdado da classe pai não se encaixa perfeitamente na classe filha.
+
+## Conceito 
+class Passaro:
+    def voar(self):
+        print('Voando...')
+class Pardal(Passaro):
+    def voar(self):
+        print('Pardal pode voar')
+class Avestruz(Passaro):
+    def voar(self):
+        print("Avestruz não voa")
+
+class Aviao(Passaro): # Uso apenas como exemplo totalmente errado o uso
+    def voar(self):
+        print("Avião está decolando")
+
+def plano_de_voo(obj): # O conceito está aqui
+    obj.voar() # O objeto precisa receber o metodo voar
+
+plano_de_voo(Pardal())  # Passando a instancia do metodo para o objeto
+plano_de_voo(Avestruz()) # Passando a instancia do metodo para o objeto
+plano_de_voo(Aviao())
