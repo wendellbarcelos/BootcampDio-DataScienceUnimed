@@ -31,14 +31,14 @@ create table product(
 -- além disso, reflita essa modificação no diagrama de esquema relacional
 -- Criar constraints relacionadas ao pagamento
 
--- Tabela de pagamento não teve relacionamento com nenhuma outra sendo uma tabela isolada, não cadastrada
--- create table payments(
-	-- idclient int,
-    -- idpayment int,
-    -- typePayment enum('Boleto', 'Cartão', 'Dois Cartões'),
-    -- limitAvailable float, 
-    -- primary key(idclient, idPayment)
--- ):
+create table payments(
+	idPayclient int,
+    idpayment int,
+    typePayment enum('Boleto', 'Cartão', 'Dois Cartões'),
+    limitAvailable float, 
+    primary key(idclient, idPayment),
+    constraint fk_payments_client foreign key (idPayclient) references clients(idClient)
+);
 
 -- Criar tabela pedido
 create table orders(
